@@ -15,12 +15,21 @@ async function listarAcoes() {
     `;
 
     dados.forEach(acao => {
+        // 🗓️ converte a data do formato ISO para o formato brasileiro
+        let dataFormatada = "";
+        if (acao.data_evento) {
+            const data = new Date(acao.data_evento);
+            dataFormatada = data.toLocaleDateString("pt-BR", {
+                timeZone: "UTC"
+            });
+        }
+
         html += `
             <tr>
                 <td>${acao.id}</td>
                 <td>${acao.nome_projeto}</td>
                 <td>${acao.local}</td>
-                <td>${acao.data_evento}</td>
+                <td>${dataFormatada}</td>
                 <td>${acao.responsavel}</td>
                 <td>${acao.descricao}</td>
             </tr>`;
@@ -29,4 +38,3 @@ async function listarAcoes() {
     html += '</table>';
     document.getElementById('resultado').innerHTML = html;
 }
-//Laura
