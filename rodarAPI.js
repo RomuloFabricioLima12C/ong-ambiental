@@ -9,25 +9,25 @@ app.use(express.static('.'));
 
 // Criar ação ambiental
 app.post('/acao', (req, res) => {
-    const { nome_projeto, local, data_evento, responsavel, descricao } = req.body;
+    const { nome, missao, area, projetos, financiamento, publico } = req.body;
 
     const sql = `
-        INSERT INTO acao_ambiental (nome_projeto, local, data_evento, responsavel, descricao)
+        INSERT INTO verdinho (nome, missao, area, projetos, financiamento, publico)
         VALUES (?, ?, ?, ?, ?)
     `;
 
-    acessaBancoNoServidor.query(sql, [nome_projeto, local, data_evento, responsavel, descricao], (err) => {
+    acessaBancoNoServidor.query(sql, [nome, missao, area, projetos, financiamento, publico], (err) => {
         if (err) {
             console.error(err);
             return res.json({ error: 'Erro ao cadastrar ação ambiental' });
         }
-        res.json({ message: 'Ação ambiental cadastrada com sucesso!' });
+        res.json({ message: 'ONG cadastrada com sucesso!' });
     });
 });
 
 // Listar ações ambientais
 app.get('/acoes', (req, res) => {
-    const sql = 'SELECT * FROM acao_ambiental';
+    const sql = 'SELECT * FROM verdinho';
 
     acessaBancoNoServidor.query(sql, (err, results) => {
         if (err) {

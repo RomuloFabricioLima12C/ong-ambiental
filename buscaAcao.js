@@ -5,33 +5,24 @@ async function listarAcoes() {
     let html = `
         <table>
             <tr>
-                <th>ID</th>
-                <th>Projeto</th>
-                <th>Local</th>
-                <th>Data</th>
-                <th>Responsável</th>
-                <th>Descrição</th>
+                <th>nome</th>
+                <th>missao</th>
+                <th>area</th>
+                <th>projetos</th>
+                <th>financiamento</th>
+                <th>publico</th>
             </tr>
     `;
 
     dados.forEach(acao => {
-        // 🗓️ converte a data do formato ISO para o formato brasileiro
-        let dataFormatada = "";
-        if (acao.data_evento) {
-            const data = new Date(acao.data_evento);
-            dataFormatada = data.toLocaleDateString("pt-BR", {
-                timeZone: "UTC"
-            });
-        }
-
         html += `
             <tr>
-                <td>${acao.id}</td>
-                <td>${acao.nome_projeto}</td>
-                <td>${acao.local}</td>
-                <td>${dataFormatada}</td>
-                <td>${acao.responsavel}</td>
-                <td>${acao.descricao}</td>
+                <td>${acao.nome}</td>
+                <td>${acao.missao}</td>
+                <td>${acao.area}</td>
+                <td>${acao.projetos}</td>
+                <td>${acao.financiamento}</td>
+                <td>${acao.publico}</td>
             </tr>`;
     });
 

@@ -2,11 +2,12 @@ document.getElementById('formAcao').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const dados = {
-        nome_projeto: document.getElementById('nome_projeto').value,
-        local: document.getElementById('local').value,
-        data_evento: document.getElementById('data_evento').value,
-        responsavel: document.getElementById('responsavel').value,
-        descricao: document.getElementById('descricao').value
+        nome: document.getElementById("nome").value,
+    missao: document.getElementById("missao").value,
+    area: document.getElementById("area").value,
+    projetos: document.getElementById("projetos").value,
+    financiamento: document.getElementById("financiamento").value,
+    publico: document.getElementById("publico").value
     };
 
     const resposta = await fetch('http://localhost:3000/acao', {
